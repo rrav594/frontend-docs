@@ -1,5 +1,10 @@
-import { Link, Outlet, useLoaderData } from "react-router-dom";
-import { getContacts } from "../contact";
+import { Link, Outlet, useLoaderData, Form } from "react-router-dom";
+import { getContacts, createContact } from "../contact";
+
+export async function action() {
+  const contact = await createContact();
+  return { contact };
+}
 
 export async function loader() {
   const contacts = await getContacts();
